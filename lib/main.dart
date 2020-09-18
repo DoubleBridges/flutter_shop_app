@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import './screens/products_overview_screen.dart';
 import './screens/product_detail_screen.dart';
-import './providers/products_provider.dart';
+import './providers/products.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,17 +13,16 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (_) => Products(),
       child: MaterialApp(
-        title: 'MyShop',
-        theme: ThemeData(
-          primarySwatch: Colors.blueGrey,
-          accentColor: Colors.orange[300],
-          fontFamily: 'Lato',
-        ),
-        home: ProductOverviewSCreen(),
-        routes: {
-          ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
-        },
-      ),
+          title: 'MyShop',
+          theme: ThemeData(
+            primarySwatch: Colors.purple,
+            accentColor: Colors.deepOrange,
+            fontFamily: 'Lato',
+          ),
+          home: ProductsOverviewScreen(),
+          routes: {
+            ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
+          }),
     );
   }
 }

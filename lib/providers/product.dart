@@ -10,14 +10,14 @@ class Product with ChangeNotifier {
 
   Product({
     @required this.id,
-    @required this.description,
-    @required this.imageUrl,
-    @required this.price,
     @required this.title,
+    @required this.description,
+    @required this.price,
+    @required this.imageUrl,
     this.isFavorite = false,
   });
 
-  void toggleFavorite() {
+  void toggleFavoriteStatus() {
     isFavorite = !isFavorite;
     notifyListeners();
   }

@@ -7,21 +7,22 @@ enum FilterOptions {
   All,
 }
 
-class ProductOverviewSCreen extends StatefulWidget {
+class ProductsOverviewScreen extends StatefulWidget {
   @override
-  _ProductOverviewSCreenState createState() => _ProductOverviewSCreenState();
+  _ProductsOverviewScreenState createState() => _ProductsOverviewScreenState();
 }
 
-class _ProductOverviewSCreenState extends State<ProductOverviewSCreen> {
+class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
   var _showOnlyFavorites = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("My Shop"),
+        title: Text('MyShop'),
         actions: <Widget>[
           PopupMenuButton(
-            onSelected: (FilterOptions selectedValue) => {
+            onSelected: (FilterOptions selectedValue) {
               setState(
                 () {
                   if (selectedValue == FilterOptions.Favorites) {
@@ -30,18 +31,22 @@ class _ProductOverviewSCreenState extends State<ProductOverviewSCreen> {
                     _showOnlyFavorites = false;
                   }
                 },
-              )
+              );
             },
             icon: Icon(
               Icons.more_vert,
             ),
-            itemBuilder: (context) => [
+            itemBuilder: (_) => [
               PopupMenuItem(
-                  child: Text('Only Favorites'),
-                  value: FilterOptions.Favorites),
-              PopupMenuItem(child: Text('Show All'), value: FilterOptions.All),
+                child: Text('Only Favorites'),
+                value: FilterOptions.Favorites,
+              ),
+              PopupMenuItem(
+                child: Text('Show All'),
+                value: FilterOptions.All,
+              ),
             ],
-          )
+          ),
         ],
       ),
       body: ProductsGrid(_showOnlyFavorites),
